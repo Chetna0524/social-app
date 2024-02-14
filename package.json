@@ -1,7 +1,7 @@
 {
 	"name": "social-app",
 	"version": "0.1.0",
-	"homepage": "https://Chetna0524.github.io/social-app",
+	"homepage": "https://Chetna0524.github.io/social-app/",
 	"private": true,
 	"dependencies": {
 		"axios": "^1.4.0",
