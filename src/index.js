@@ -9,12 +9,10 @@ import store from "./redux/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-const PUBLIC_URL = "https://chetna0524.github.io/social-app/";
-
 root.render(
 	<React.StrictMode>
 		<Provider store={store}>
-			<Router basename={PUBLIC_URL}>
+			<Router>
 				<Routes>
 					<Route path="/*" element={<App />} />
 				</Routes>
