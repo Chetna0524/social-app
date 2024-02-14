@@ -9,7 +9,7 @@ import store from "./redux/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-const PUBLIC_URL = "https://Chetna0524.github.io/social-app/";
+const PUBLIC_URL = "https://chetna0524.github.io/social-app/";
 
 root.render(
 	<React.StrictMode>
