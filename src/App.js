@@ -20,6 +20,8 @@ function App() {
 					<Route element={<PrivateRoute />}>
 						<Route path="/feeds" element={<Home />} />
 					</Route>
+
+					<Route path="*" element={<UserAuth />} />
 				</Route>
 			</Routes>
 		</>
