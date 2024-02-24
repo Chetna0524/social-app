@@ -6,7 +6,6 @@ const Skeleton = () => {
 		return <SkeletonPost key={i} />;
 	});
 
-	console.log("numberOfPost", numberOfPost);
 	return (
 		<>
 			<div className="skeleton-sec">{numberOfPost}</div>

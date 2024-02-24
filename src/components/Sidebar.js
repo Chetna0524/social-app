@@ -8,8 +8,6 @@ function Sidebar() {
 	const { currentUser } = useSelector((state) => state.auth);
 	const [isPhotoUrl, setIsPhotoUrl] = useState(false);
 
-	console.log(currentUser);
-
 	useEffect(() => {
 		if (currentUser?.photoUrl) {
 			setIsPhotoUrl(true);

@@ -7,7 +7,7 @@ import { redirect } from "react-router-dom";
 export const register = (newUser) => async (dispatch) => {
 	try {
 		const res = await instance.post("/api/user/register", newUser);
-		console.log("newUser", res.data);
+
 		dispatch({
 			type: actionTypes.AUTHENTICATED,
 			payload: res.data.results,
@@ -25,7 +25,6 @@ export const register = (newUser) => async (dispatch) => {
 export const login = (user) => async (dispatch) => {
 	try {
 		const res = await instance.post("/api/user/login", user);
-		console.log("userLogin", res.data);
 		localStorage.setItem("token", res.data.Token);
 		dispatch({
 			type: actionTypes.AUTHENTICATED,

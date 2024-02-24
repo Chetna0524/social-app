@@ -1,6 +1,5 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { auth } from "../utility/firebase-config";
 
 import * as actionTypes from "../redux/types/userTypes";
 
@@ -12,7 +11,6 @@ function Logout() {
 			dispatch({
 				type: actionTypes.LOGOUT,
 			});
-			console.log("logged out!!!");
 		} catch (err) {
 			console.log(err);
 		}

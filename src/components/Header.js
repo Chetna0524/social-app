@@ -8,19 +8,14 @@ import {
 	FaArchive,
 	FaRocketchat,
 	FaBell,
-	FaUserAlt,
 } from "react-icons/fa";
 
 import { CgMenuGridO } from "react-icons/cg";
-
-import Avatar from "./Avatar";
 
 function Header() {
 	const { currentUser } = useSelector((state) => state.auth);
 	const [isPhotoUrl, setIsPhotoUrl] = useState(false);
 	const [isMenu, setInMenu] = useState(false);
-
-	console.log(currentUser);
 
 	useEffect(() => {
 		if (currentUser.photoUrl) {
@@ -32,7 +27,6 @@ function Header() {
 		setInMenu(!isMenu);
 	};
 
-	console.log(isPhotoUrl);
 	return (
 		<>
 			<div className="navbar-custom">

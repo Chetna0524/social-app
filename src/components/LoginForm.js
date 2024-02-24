@@ -9,7 +9,6 @@ import { useNavigate, Navigate } from "react-router-dom";
 import { login } from "../redux/actions/userActions";
 
 import { AiFillCloseCircle } from "react-icons/ai";
-import SocialLogin from "./SocialLogin";
 
 const validationSchema = yup.object({
 	email: yup
@@ -28,14 +27,12 @@ function LoginForm() {
 	const [success, setSuccess] = useState(false);
 
 	const onSubmit = async (values) => {
-		console.log(values);
 		try {
 			await dispatch(login({ ...values })).then(() => navigate("/feeds"));
-			console.log("dispatched");
+
 			setSuccess(true);
 		} catch (error) {
 			console.log("err1", error);
-			console.log("err", error.response.data);
 		}
 	};
 
@@ -48,7 +45,6 @@ function LoginForm() {
 		validationSchema,
 		onSubmit,
 	});
-	console.log("Errors", formik.errors);
 
 	return (
 		<div className="auth-form-sec">
@@ -108,9 +104,6 @@ function LoginForm() {
 							</button>
 						</div>
 					</form>
-					{/* <div className="soical-login-sec">
-						<SocialLogin />
-					</div> */}
 				</div>
 			</div>
 		</div>

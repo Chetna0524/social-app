@@ -17,7 +17,6 @@ export const getPosts = () => async (dispatch) => {
 			type: actionTypes.POSTS_SUCCESSFULL,
 			payload: posts.data,
 		});
-		console.log("Posts", posts);
 	} catch (err) {
 		dispatch({
 			type: actionTypes.POSTS_REQUEST_FAILED,
@@ -39,7 +38,6 @@ export const postAdded = (newPost) => async (dispatch) => {
 			type: actionTypes.POST_ADDED,
 			payload: response.data,
 		});
-		console.log("postAdded", response.data);
 	} catch (err) {
 		console.log(err);
 	}
