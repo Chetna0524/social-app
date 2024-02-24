@@ -32,7 +32,7 @@ function RegisterForm() {
 
 	const onSubmit = async (values) => {
 		const { confirmPassword, ...data } = values;
-		console.log("data", data);
+
 		dispatch(register({ ...data }));
 	};
 
@@ -48,8 +48,6 @@ function RegisterForm() {
 		validationSchema,
 		onSubmit,
 	});
-
-	console.log("err", error);
 
 	return (
 		<div className="auth-form-sec">
