@@ -9,14 +9,14 @@ export const register = (newUser) => async (dispatch) => {
 		const res = await instance.post("/api/user/register", newUser);
 
 		dispatch({
-			type: actionTypes.AUTHENTICATED,
-			payload: res.data.results,
+			type: actionTypes.REGISTERED,
+			//payload: res.data.results,
 		});
 		redirect("/");
 	} catch (err) {
 		console.log(err);
 		dispatch({
-			type: actionTypes.NOT_AUTHENTICATED,
+			type: actionTypes.NOT_REGISTERED,
 			payload: err.response.data,
 		});
 	}

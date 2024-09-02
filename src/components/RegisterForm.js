@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import * as yup from "yup";
@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { FaLinkedin } from "react-icons/fa";
 
 import { AiFillCloseCircle } from "react-icons/ai";
+import { Spinner } from "react-bootstrap";
 
 const validationSchema = yup.object({
 	name: yup
@@ -27,12 +28,12 @@ const validationSchema = yup.object({
 function RegisterForm() {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-
+	const [isLoading, setLoading] = useState(false);
 	const { error } = useSelector((state) => state.auth);
 
 	const onSubmit = async (values) => {
 		const { confirmPassword, ...data } = values;
-
+		setLoading(true);
 		dispatch(register({ ...data }));
 	};
 
@@ -60,9 +61,9 @@ function RegisterForm() {
 					<p className="sub-heading">
 						Alredy a User? Please <Link to="/">Login</Link>{" "}
 					</p>
-					{error ? (
+					{error.registerError ? (
 						<span className="error-msg text-danger">
-							<AiFillCloseCircle /> {error}
+							<AiFillCloseCircle /> {error.registerError}
 						</span>
 					) : null}
 					<form onSubmit={formik.handleSubmit}>
@@ -138,6 +139,16 @@ function RegisterForm() {
 								className="btn btn-info mt-3"
 								disabled={!formik.isValid}
 							>
+								{isLoading && (
+									<Spinner
+										as="span"
+										animation="border"
+										size="sm"
+										role="status"
+										aria-hidden="true"
+										style={{ display: "inline-block", marginRight: "5px" }}
+									/>
+								)}
 								Submit
 							</button>
 						</div>

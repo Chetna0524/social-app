@@ -9,6 +9,7 @@ import { useNavigate, Navigate } from "react-router-dom";
 import { login } from "../redux/actions/userActions";
 
 import { AiFillCloseCircle } from "react-icons/ai";
+import { Spinner } from "react-bootstrap";
 
 const validationSchema = yup.object({
 	email: yup
@@ -23,18 +24,23 @@ const validationSchema = yup.object({
 function LoginForm() {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const { error } = useSelector((state) => state?.auth);
+	/* const [error, setError] = useState(""); */
 	const [success, setSuccess] = useState(false);
+	const [isLoading, setLoading] = useState(false);
+	const { error } = useSelector((state) => state.auth);
 
 	const onSubmit = async (values) => {
 		try {
+			setLoading(true);
 			await dispatch(login({ ...values })).then(() => navigate("/feeds"));
 
 			setSuccess(true);
-		} catch (error) {
-			console.log("err1", error);
+		} catch (err) {
+			console.log("err1", err);
 		}
 	};
+
+	console.log("err1", error);
 
 	const formik = useFormik({
 		initialValues: {
@@ -57,9 +63,9 @@ function LoginForm() {
 					<p className="sub-heading">
 						New User? Please <Link to="/register">Register</Link>
 					</p>
-					{error ? (
+					{error.authError ? (
 						<span className="error-msg text-danger">
-							<AiFillCloseCircle /> {error}
+							<AiFillCloseCircle /> {error.authError}
 						</span>
 					) : null}
 					{success ? (
@@ -100,6 +106,16 @@ function LoginForm() {
 								className="btn btn-info btn-comm mt-3"
 								disabled={!formik.isValid}
 							>
+								{isLoading && (
+									<Spinner
+										as="span"
+										animation="border"
+										size="sm"
+										role="status"
+										aria-hidden="true"
+										style={{ display: "inline-block", marginRight: "5px" }}
+									/>
+								)}
 								Submit
 							</button>
 						</div>
