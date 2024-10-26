@@ -8,10 +8,12 @@ export const register = (newUser) => async (dispatch) => {
 	try {
 		const res = await instance.post("/api/user/register", newUser);
 
-		await dispatch({
+		 dispatch({
 			type: actionTypes.REGISTERED,
 			//payload: res.data.results,
-		}).then(() => redirect("/"));
+		})
+
+		redirect("/")
 		
 	} catch (err) {
 		console.log(err);
