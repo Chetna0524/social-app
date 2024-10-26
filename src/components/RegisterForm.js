@@ -34,7 +34,8 @@ function RegisterForm() {
 	const onSubmit = async (values) => {
 		const { confirmPassword, ...data } = values;
 		setLoading(true);
-		dispatch(register({ ...data }));
+		await dispatch(register({ ...data }));
+		navigate('/)
 	};
 
 	const formik = useFormik({
