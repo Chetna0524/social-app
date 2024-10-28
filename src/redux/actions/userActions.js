@@ -2,7 +2,7 @@ import * as actionTypes from "../types/userTypes";
 
 import instance from "../../utility/axios";
 
-import { redirect } from "react-router-dom";
+
 
 export const register = (newUser) => async (dispatch) => {
 	try {
@@ -13,7 +13,7 @@ export const register = (newUser) => async (dispatch) => {
 			//payload: res.data.results,
 		})
 
-		redirect("/")
+		
 		
 	} catch (err) {
 		console.log(err);
@@ -32,7 +32,7 @@ export const login = (user) => async (dispatch) => {
 			type: actionTypes.AUTHENTICATED,
 			payload: res.data.results,
 		});
-		redirect("/feeds");
+		
 	} catch (err) {
 		console.log("errAction", err);
 		dispatch({
